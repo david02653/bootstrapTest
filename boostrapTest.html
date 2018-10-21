@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Boostray test</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            var data = "http://localhost:8080/JsonTest/";
+            $(document).ready(function(){
+            $.getJSON(data, function(data) {
+                for(var idx in data) {
+                    var content = "<tr>" +
+                                  "<td>" + data[idx].sightName + "</td>" +
+                                  "<td>" + data[idx].zone + "</td>" + 
+                                  "<td>" + data[idx].category + "</td>" +
+                                  "<td><button type='button' class='btn btn-primary' data-toggle='collapse' data-target='#data" + idx + "'>More Detail</button></td>" +
+                                  "<td><a href='" + data[idx].googleMapUrl + "' class='btn btn-info btn-md' role='button'>Google Map Link</a></td>" +
+                                  "</tr><tr class='collapse' id='data" + idx +  "'>" +
+                                  "<div class='row'><td>" +
+                                  "<div class='col-sm-4'><h5>picture: </h5><img src='" + data[idx].photoURL + "' alt='spotPhoto'></div>" +
+                                  "</td><td colspan='5'>" +
+                                  "<div class='col-sm-8'><h4>description: </h4><p>" + data[idx].description + "</p></div>" +
+                                  "</td></div></tr>";
+                    $("#area").append(content);
+                                     }
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <div class="jumbotron text-center">
+            <h1>first boostrap page</h1>
+            <p>testing content</p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Keelung travel spot Data table</h3>
+                    <p>display informations from web crawler</p>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>SightName</th>
+                                <th>Zone</th>
+                                <th>Category</th>
+                                <th>Detail</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody id="area">
+                            </tbody>
+                            <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td><button type="button" class="btn btn-info btn-primary btn-md">test</button></td>
+                            <td><input type="button" class="btn btn-info btn-primary btn-md" value="test"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
